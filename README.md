@@ -6,5 +6,11 @@ This is therefore both an experiment for me in Javascript but also as to see, ho
 
 I'll put the milestones down here for me and others to see, how fast it went.
 
-3/4-2023: 30 minutes
+3/4-2023: 
+10 minutes
 Index.html, script.js and style.css
+
+10 minutes
+Added archive function
+
+
