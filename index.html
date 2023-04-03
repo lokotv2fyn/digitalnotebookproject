@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Notebook</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css">
+  <style>
+    body {
+      background-color: #1a202c;
+      color: #cbd5e0;
+    }
+
+    input:focus, button:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    ::placeholder {
+      color: #a0aec0;
+      opacity: 1;
+    }
+
+    :-ms-input-placeholder {
+      color: #a0aec0;
+    }
+
+    ::-ms-input-placeholder {
+      color: #a0aec0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="max-w-3xl mx-auto p-6">
+
+    <h1 class="text-3xl font-bold mb-6">Digital Notebook</h1>
+
+    <form class="mb-6" onsubmit="addEntry(event)">
+      <label class="block mb-2 font-bold" for="title">Title</label>
+      <input class="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-gray-800 focus:border-gray-500" id="title" type="text" placeholder="Enter a title...">
+      <label class="block mb-2 font-bold" for="link">Link</label>
+      <input class="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-gray-800 focus:border-gray-500" id="link" type="text" placeholder="Enter a link...">
+      <label class="block mb-2 font-bold" for="summary">Summary</label>
+      <textarea class="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-gray-800 focus:border-gray-500" id="summary" placeholder="Enter a summary..."></textarea>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Add Entry</button>
+    </form>
+
+    <h2 class="text-2xl font-bold mb-2">Links to Read</h2>
+
+    <ul id="links-list" class="divide-y divide-gray-600">
+      <!-- List items will be added dynamically -->
+    </ul>
+
+  </div>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
