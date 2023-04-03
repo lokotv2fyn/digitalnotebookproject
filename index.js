@@ -67,3 +67,29 @@ function addEntry(event) {
 
 // Add an event listener to the form
 form.addEventListener('submit', addEntry);
+
+// Show the entries from local storage on page load
+window.addEventListener('load', () => {
+  entries = JSON.parse(localStorage.getItem('entries')) || [];
+  entries.forEach(entry => {
+    const listItem = document.createElement('li');
+    const linkTitle = document.createElement('h3');
+    const linkLink = document.createElement('a');
+    const linkSummary = document.createElement('p');
+
+    linkTitle.textContent = entry.title;
+    linkTitle.classList.add('text-lg', 'font-bold', 'mb-1');
+    linkLink.textContent = entry.link;
+    linkLink.href = entry.link;
+    linkLink.target = '_blank';
+    linkLink.classList.add('text-blue-500', 'underline', 'hover:text-blue-700');
+    linkSummary.textContent = entry.summary;
+    linkSummary.classList.add('text-gray-400');
+
+    listItem.appendChild(linkTitle);
+    listItem.appendChild(linkLink);
+    listItem.appendChild(linkSummary);
+
+    linksList.appendChild(listItem);
+  });
+});
