@@ -93,3 +93,50 @@ window.addEventListener('load', () => {
     linksList.appendChild(listItem);
   });
 });
+
+// Add a new property 'archived' to each entry object
+entries = entries.map(entry => ({ ...entry, archived: false }));
+
+// Function to toggle archived entries
+function toggleArchivedEntries() {
+  const toggleArchivedBtn = document.querySelector("#toggle-archived");
+  const showingArchived = toggleArchivedBtn.textContent === "Hide Archived Entries";
+
+  toggleArchivedBtn.textContent = showingArchived ? "Show Archived Entries" : "Hide Archived Entries";
+  displayEntries(showingArchived);
+}
+
+// Function to archive an entry
+function archiveEntry(index) {
+  entries[index].archived = !entries[index].archived;
+  localStorage.setItem("entries", JSON.stringify(entries));
+  displayEntries(document.querySelector("#toggle-archived").textContent === "Hide Archived Entries");
+}
+
+// Update the 'addEntry' function
+function addEntry(event) {
+  // Add your code here
+
+  // Add the 'archived' property to the new entry object
+  const entry = { title, link, summary, archived: false };
+
+  // Add your code here
+}
+
+// Create a new function 'displayEntries'
+function displayEntries(showArchived) {
+  // Add your code here
+
+  // Filter the entries based on their 'archived' property
+  const filteredEntries = entries.filter(entry => entry.archived === showArchived);
+
+  // Add your code here
+}
+
+// Update the event listener for the 'load' event
+window.addEventListener("load", () => {
+  // Add your code here
+
+  // Call the 'displayEntries' function instead of duplicating the code
+  displayEntries(false);
+});
