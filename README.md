@@ -18,3 +18,4 @@ I tried switching to 4.0 and with a fresh slate, where i submitted the index and
 
 **Total: About an hour**
 
+### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
