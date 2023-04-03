@@ -14,5 +14,5 @@ ChatGPT send me different variations of the javascript file, kept stopping itsel
 
 I tried switching to 4.0 and with a fresh slate, where i submitted the index and javascript file asking it for an archive button and a button that showed archived items.
 
-- Submitted the files that worked fine from 3.5 and got a good response.
+- Submitted the files that worked fine from 3.5 and got a good response. Now the archive button is there, but it submits an entry twice - an empty entry and the entry with input.
 
