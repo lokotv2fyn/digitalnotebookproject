@@ -6,7 +6,7 @@ This is therefore both an experiment for me in Javascript but also as to see, ho
 
 I'll put the milestones down here for me and others to see, how fast it went.
 
-'*Note that I am a complete beginner, and i reckon some might say i should start somewhere else while learning Javascript. I probably should. Therefore you might also see some really bad rookie mistakes. Which is probably also why I should start somewhere else. I won't though. I also have a great interest in what and how i can use ChatGPT, so in this way I am able to combine two projects in one.*'
+`Note that I am a complete beginner, and i reckon some might say i should start somewhere else while learning Javascript. I probably should. Therefore you might also see some really bad rookie mistakes. I probably shouldn't even use the markdown the way I am here.  Which is probably also why I should start somewhere else. I won't though. I also have a great interest in what and how i can use ChatGPT, so in this way I am able to combine two projects in one. Feel free to comment anything on my potentially horrible journey.`
 
 
 ### 3/4-2023: 
