@@ -6,11 +6,13 @@ This is therefore both an experiment for me in Javascript but also as to see, ho
 
 I'll put the milestones down here for me and others to see, how fast it went.
 
-3/4-2023: 
-10 minutes
-Index.html, script.js and style.css
+### 3/4-2023: 
+- Index.html, script.js and style.css
+- Tried to add archive button and list
 
-10 minutes
-Added archive function
+ChatGPT send me different variations of the javascript file, kept stopping itself while trying to print the whole javascript file. The above was made with ChatGPT 3.5, but it kept confusing itself. 
 
+I tried switching to 4.0 and with a fresh slate, where i submitted the index and javascript file asking it for an archive button and a button that showed archived items.
+
+- Submitted the files that worked fine from 3.5 and got a good response.
 
