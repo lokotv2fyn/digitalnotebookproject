@@ -35,7 +35,7 @@ My ability to spot, what and where something was wrong in the JavaScript code th
 
 - Been trying to troubleshoot why my code creates an empty `<li>` element.
 
-And while doing so, I find that the way ChatGPT explains to me the different possible errors i actually learn how to look for errors.
+And while doing so, I found that the way ChatGPT explains to me the different possible errors i actually learn how to look for errors.
 After a couple misfires from ChatGPT, and after I send the updated code 'we' managed to find the error and fix it.
 
 - Found a new bug though. When I push 'archive' on a second entry it unarchives something that has already been archived.
@@ -46,11 +46,16 @@ And while explaining the error to ChatGPT it hit me, that this must be some sort
 
 I figured this part was easier than explaining the first one on my 'rough-roadmap'. And it only took one try, then ChatGPT had it done for me.
 
+*Appearantly something broke the add entry button, so now I have a new bug to look into next time*
+
 **Total: About an hour** 
 
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:
-- Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links i don't want in the notebook, but i still wanna know, that i archived them and for what reason - i think.) Or just a checkbox, once checked it moves from - wants to read into a category.
+- Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links I don't want in the notebook, but I still wanna know, that I archived them and for what reason - I think.) Or just a checkbox, once checked it moves from - wants to read into a category. (When an entry is marked 'read' it should automatically put itself into the category in the menu?)
 - ~~Categories~~
 - Search-function
+- Menu with all entries sorted into categories
+- Obviously a better design
+- Obviously gonna store the entries some other place than local so I can take it with me (Maybe make a login to access and without login you can use it locally?)
