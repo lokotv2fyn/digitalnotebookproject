@@ -46,7 +46,7 @@ And while explaining the error to ChatGPT it hit me, that this must be some sort
 
 I figured this part was easier than explaining the first one on my 'rough-roadmap'. And it only took one try, then ChatGPT had it done for me.
 
-*Appearantly something broke the add entry button, so now I have a new bug to look into next time*
+*Appearantly something broke the add entry button, so now I have a new bug to look into next time. It works when i clear entries first.*
 
 **Total: About an hour** 
 
