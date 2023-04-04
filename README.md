@@ -46,7 +46,9 @@ And while explaining the error to ChatGPT it hit me, that this must be some sort
 
 I figured this part was easier than explaining the first one on my 'rough-roadmap'. And it only took one try, then ChatGPT had it done for me.
 
-*Appearantly something broke the add entry button, so now I have a new bug to look into next time. It works when i clear entries first.*
+Appearantly something broke the add entry button. It works when i clear entries first.
+
+- There was a duplicate function of `archiveEntry` that 'we' removed.
 
 **Total: About an hour** 
 
@@ -54,6 +56,7 @@ I figured this part was easier than explaining the first one on my 'rough-roadma
 
 ### Rough-roadmap:
 - Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links I don't want in the notebook, but I still wanna know, that I archived them and for what reason - I think.) Or just a checkbox, once checked it moves from - wants to read into a category. (When an entry is marked 'read' it should automatically put itself into the category in the menu?)
+- Links to read title should change to archived entries when that index is active
 - ~~Categories~~
 - Search-function
 - Menu with all entries sorted into categories
