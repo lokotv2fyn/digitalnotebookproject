@@ -5,6 +5,7 @@ const linkInput = document.querySelector('#link');
 const summaryInput = document.querySelector('#summary');
 const linksList = document.querySelector('#links-list');
 const toggleArchivedBtn = document.querySelector('#toggle-archived');
+const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
 
 // Create an empty array to hold entries
 let entries = [];
@@ -25,12 +26,15 @@ function addEntry(event) {
   const title = titleInput.value;
   const link = linkInput.value;
   const summary = summaryInput.value;
+  const categories = Array.from(categoryCheckboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.value);
 
-  if (!title || !link || !summary) {
+  if (!title || !link || !summary || categories.length === 0) {
     return;
   }
 
-  const entry = { title, link, summary, archived: false };
+  const entry = { title, link, summary, categories, archived: false };
 
   entries.push(entry);
   entries.sort((a, b) => a.title.localeCompare(b.title));
@@ -38,6 +42,7 @@ function addEntry(event) {
   titleInput.value = '';
   linkInput.value = '';
   summaryInput.value = '';
+  categoryCheckboxes.forEach(checkbox => (checkbox.checked = false));
 
   displayEntries(false);
 
@@ -84,10 +89,19 @@ function displayEntries(showArchived) {
       };
     })(entry);
 
+    const categoryList = document.createElement('ul');
+    categoryList.classList.add('list-disc', 'list-inside', 'mt-2');
+    entry.categories.forEach(category => {
+      const categoryItem = document.createElement('li');
+      categoryItem.textContent = category;
+      categoryList.appendChild(categoryItem);
+    });
+
     listItem.appendChild(linkTitle);
     listItem.appendChild(linkLink);
     listItem.appendChild(linkSummary);
     listItem.appendChild(archiveButton);
+    listItem.appendChild(categoryList); // Add the categoryList to the listItem
 
     linksList.appendChild(listItem);
   });

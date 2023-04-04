@@ -42,11 +42,15 @@ After a couple misfires from ChatGPT, and after I send the updated code 'we' man
 
 And while explaining the error to ChatGPT it hit me, that this must be some sort of backwards-rubberducking. Since I am not *that* good at JavaScript yet, I am unintentionally explaining everything very simple. 
 
-**Total: 30 minutes** 
+- Added the categories to entries
+
+I figured this part was easier than explaining the first one on my 'rough-roadmap'. And it only took one try, then ChatGPT had it done for me.
+
+**Total: About an hour** 
 
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:
 - Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links i don't want in the notebook, but i still wanna know, that i archived them and for what reason - i think.) Or just a checkbox, once checked it moves from - wants to read into a category.
-- Categories
+- ~~Categories~~
 - Search-function
