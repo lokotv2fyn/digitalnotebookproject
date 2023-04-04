@@ -31,9 +31,18 @@ My ability to spot, what and where something was wrong in the JavaScript code th
 
 **Total: About an hour**
 
+### 4/4-2023:
+
+- Been trying to troubleshoot why my code creates an empty `<li>` element.
+
+And while doing so, I find that the way ChatGPT explains to me the different possible errors i actually learn how to look for errors.
+After a couple misfires from ChatGPT, and after I send the updated code 'we' managed to find the error and fix it.
+
+**Total: 30 minutes** 
+
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:
-- Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links i don't want in the notebook, but i still wanna know, that i archived them and for what reason - i think.)
+- Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links i don't want in the notebook, but i still wanna know, that i archived them and for what reason - i think.) Or just a checkbox, once checked it moves from - wants to read into a category.
 - Categories
 - Search-function

@@ -15,6 +15,9 @@ if (localStorage.getItem('entries')) {
   entries = entries.map(entry => ({ ...entry, archived: entry.archived || false }));
 }
 
+// Display entries without archived items
+displayEntries(false);
+
 // Function to add entry
 function addEntry(event) {
   event.preventDefault();
@@ -22,6 +25,11 @@ function addEntry(event) {
   const title = titleInput.value;
   const link = linkInput.value;
   const summary = summaryInput.value;
+
+  if (!title || !link || !summary) {
+    return;
+  }
+  
   const entry = { title, link, summary, archived: false };
 
   entries.push(entry);
@@ -39,6 +47,10 @@ function addEntry(event) {
 function displayEntries(showArchived) {
   const filteredEntries = entries.filter(entry => entry.archived === showArchived);
   linksList.innerHTML = '';
+
+  if (filteredEntries.length === 0) {
+    return;
+  }
 
   filteredEntries.forEach((entry, index) => {
     const listItem = document.createElement('li');
@@ -84,6 +96,13 @@ function toggleArchivedEntries() {
 
 form.addEventListener('submit', addEntry);
 
-window.addEventListener('load', () => {
+// Add the clearEntries function
+function clearEntries() {
+  entries = [];
+  localStorage.removeItem('entries');
   displayEntries(false);
-});
+}
+
+// Add an event listener for the Clear Entries button
+const clearEntriesBtn = document.querySelector('#clear-entries');
+clearEntriesBtn.addEventListener('click', clearEntries);
