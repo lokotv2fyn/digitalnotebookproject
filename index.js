@@ -107,13 +107,6 @@ function displayEntries(showArchived) {
   });
 }
 
-function archiveEntry(entryToArchive) {
-  const index = entries.findIndex(entry => entry === entryToArchive);
-  entries[index].archived = !entries[index].archived;
-  localStorage.setItem('entries', JSON.stringify(entries));
-  displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
-}
-
 
 function toggleArchivedEntries() {
   const showingArchived = toggleArchivedBtn.textContent === 'Hide Archived Entries';
