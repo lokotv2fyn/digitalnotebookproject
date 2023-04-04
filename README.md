@@ -62,3 +62,5 @@ Appearantly something broke the add entry button. It works when i clear entries 
 - Menu with all entries sorted into categories
 - Obviously a better design
 - Obviously gonna store the entries some other place than local so I can take it with me (Maybe make a login to access and without login you can use it locally?)
+- DREEEEAMCASE SCENARIO: On frontpage an area with recommended in the different categories based on what i have already read
+- A prettier readme
