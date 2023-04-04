@@ -38,6 +38,10 @@ My ability to spot, what and where something was wrong in the JavaScript code th
 And while doing so, I find that the way ChatGPT explains to me the different possible errors i actually learn how to look for errors.
 After a couple misfires from ChatGPT, and after I send the updated code 'we' managed to find the error and fix it.
 
+- Found a new bug though. When I push 'archive' on a second entry it unarchives something that has already been archived.
+
+And while explaining the error to ChatGPT it hit me, that this must be some sort of backwards-rubberducking. Since I am not *that* good at JavaScript yet, I am unintentionally explaining everything very simple. 
+
 **Total: 30 minutes** 
 
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).

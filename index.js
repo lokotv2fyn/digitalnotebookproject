@@ -29,7 +29,7 @@ function addEntry(event) {
   if (!title || !link || !summary) {
     return;
   }
-  
+
   const entry = { title, link, summary, archived: false };
 
   entries.push(entry);
@@ -42,6 +42,13 @@ function addEntry(event) {
   displayEntries(false);
 
   localStorage.setItem('entries', JSON.stringify(entries));
+}
+
+function archiveEntry(entryToArchive) {
+  const index = entries.findIndex(entry => entry === entryToArchive);
+  entries[index].archived = !entries[index].archived;
+  localStorage.setItem('entries', JSON.stringify(entries));
+  displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
 
 function displayEntries(showArchived) {
@@ -69,9 +76,13 @@ function displayEntries(showArchived) {
     linkSummary.classList.add('text-gray-400');
     archiveButton.textContent = entry.archived ? 'Unarchive' : 'Archive';
     archiveButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'focus:outline-none', 'focus:shadow-outline', 'ml-2');
-    archiveButton.onclick = () => {
-      archiveEntry(index);
-    };
+
+    // Add a closure for the archiveButton.onclick function
+    archiveButton.onclick = (function(entry) {
+      return function() {
+        archiveEntry(entry);
+      };
+    })(entry);
 
     listItem.appendChild(linkTitle);
     listItem.appendChild(linkLink);
@@ -82,11 +93,13 @@ function displayEntries(showArchived) {
   });
 }
 
-function archiveEntry(index) {
+function archiveEntry(entryToArchive) {
+  const index = entries.findIndex(entry => entry === entryToArchive);
   entries[index].archived = !entries[index].archived;
   localStorage.setItem('entries', JSON.stringify(entries));
   displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
+
 
 function toggleArchivedEntries() {
   const showingArchived = toggleArchivedBtn.textContent === 'Hide Archived Entries';
