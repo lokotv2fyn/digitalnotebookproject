@@ -52,6 +52,14 @@ Appearantly something broke the add entry button. It works when i clear entries 
 
 **Total: About an hour** 
 
+### 5/4-2023:
+
+- Whenever i edited an entry, it created a new one, when i saved it rather than updating the existing.
+
+Trying to fix this bug was a hot mess! But i kept trying to get chatgpt to fix two things for me at one time. First, that the button didn't change to 'save entry' and second, that it made a new entry. When I finally gave up on fixing both at the same time we got the first part handled. *Lesson learned!* 
+
+I ran into the cap of messages on chatgpt 4. I tried switching back to 3.5, but 3.5 doesnt really catch my drift, and keeps stopping itself when printing JavaScript, and can't really remember what it was doing, when I ask it to pick it back up. Therefore I think I can conclude, that 3.5 does not work for this project. 
+
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:
@@ -64,3 +72,6 @@ Appearantly something broke the add entry button. It works when i clear entries 
 - Obviously gonna store the entries some other place than local so I can take it with me (Maybe make a login to access and without login you can use it locally?)
 - DREEEEAMCASE SCENARIO: On frontpage an area with recommended in the different categories based on what i have already read
 - A prettier readme
+
+Bugs:
+- Cannot add entry without category

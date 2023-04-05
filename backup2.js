@@ -101,84 +101,23 @@ function displayEntries(showArchived) {
     });
 
     const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.classList.add('bg-yellow-500', 'hover:bg-yellow-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'focus:outline-none', 'focus:shadow-outline', 'ml-2');
-  editButton.onclick = (function(entry) {
-    return function() {
-      editEntry(entry);
-    };
-  })(entry);
+    editButton.textContent = 'Edit';
+    editButton.classList.add('bg-yellow-500', 'hover:bg-yellow-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'focus:outline-none', 'focus:shadow-outline', 'ml-2');
+    editButton.onclick = (function(entry) {
+      return function() {
+        editEntry(entry);
+      };
+    })(entry);
 
     listItem.appendChild(linkTitle);
     listItem.appendChild(linkLink);
     listItem.appendChild(linkSummary);
     listItem.appendChild(archiveButton);
-    listItem.appendChild(editButton); 
+    listItem.appendChild(editButton);
     listItem.appendChild(categoryList);
 
     linksList.appendChild(listItem);
   });
-}
-
-
-function toggleArchivedEntries() {
-  const showingArchived = toggleArchivedBtn.textContent === 'Hide Archived Entries';
-  toggleArchivedBtn.textContent = showingArchived ? 'Show Archived Entries' : 'Hide Archived Entries';
-  entriesTitle.textContent = showingArchived ? 'Links to Read' : 'Archived Entries';
-  displayEntries(!showingArchived);
-}
-
-function clearEntries() {
-  entries = [];
-  localStorage.removeItem('entries');
-  displayEntries(false);
-}
-
-// Add an event listener for the Clear Entries button
-const clearEntriesBtn = document.querySelector('#clear-entries');
-clearEntriesBtn.addEventListener('click', clearEntries);
-
-// Add an event listener for the form's submit event
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (isEditMode) {
-    saveEntry();
-  }
-});
-
-// Function to handle the form's submit event
-function handleSubmit(event) {
-  event.preventDefault();
-
-  const title = titleInput.value;
-  const link = linkInput.value;
-  const summary = summaryInput.value;
-  const categories = Array.from(categoryCheckboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
-
-  if (!title || !link || !summary) {
-    return;
-  }
-
-  const entry = { title, link, summary, categories, archived: false };
-
-  if (entryIndex === -1) {
-    entries.push(entry);
-  } else {
-    entries[entryIndex] = entry;
-  }
-
-  entries.sort((a, b) => a.title.localeCompare(b.title));
-
-  // Reset the state
-  entryIndex = -1;
-  form.querySelector('[type="submit"]').textContent = 'Add Entry';
-
-  // Reset the form and display the entries
-  form.reset();
-  localStorage.setItem('entries', JSON.stringify(entries));
-  displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
 
 // Function to edit entry
@@ -193,29 +132,28 @@ function editEntry(entryToEdit) {
   form.querySelector('[type="submit"]').textContent = 'Save Entry';
   // Remove the form's submit event listener to prevent multiple submissions
   form.removeEventListener('submit', handleSubmit);
+  form.addEventListener('submit', saveEntry);
 }
 
-// Function to save edited entry
-function saveEntry() {
-  // Update the entry with the new values from the input fields
-  entries[entryIndex].title = titleInput.value;
-  entries[entryIndex].link = linkInput.value;
-  entries[entryIndex].summary = summaryInput.value;
-  entries[entryIndex].categories = Array.from(categoryCheckboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
-
-  // Reset the state
-  isEditMode = false;
-  form.querySelector('[type="submit"]').textContent = 'Add Entry';
-  entryIndex = -1;
-
-  // Update localStorage and display the entries
-  localStorage.setItem('entries', JSON.stringify(entries));
-  displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
-}
-
-
-
-
-
+function saveEntry(event) {
+    // Update the entry with the new values from the input fields
+    entries[entryIndex].title = titleInput.value;
+    entries[entryIndex].link = linkInput.value;
+    entries[entryIndex].summary = summaryInput.value;
+    entries[entryIndex].categories = Array.from(categoryCheckboxes)
+      .filter(checkbox => checkbox.checked)
+      .map(checkbox => checkbox.value);
+  
+    // Reset the state
+    isEditMode = false;
+    form.querySelector('[type="submit"]').textContent = 'Add Entry';
+    entryIndex = -1;
+  
+    // Update localStorage and display the entries
+    localStorage.setItem('entries', JSON.stringify(entries));
+    displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
+  
+    // Reattach the form's submit event listener
+    form.addEventListener('submit', handleSubmit);
+  }
+  
