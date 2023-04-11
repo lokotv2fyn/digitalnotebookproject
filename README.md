@@ -60,11 +60,21 @@ Trying to fix this bug was a hot mess! But i kept trying to get chatgpt to fix t
 
 I ran into the cap of messages on chatgpt 4. I tried switching back to 3.5, but 3.5 doesnt really catch my drift, and keeps stopping itself when printing JavaScript, and can't really remember what it was doing, when I ask it to pick it back up. Therefore I think I can conclude, that 3.5 does not work for this project. 
 
+### 11/4-2023:
+
+It would seem that an easter holliday fixed our problems. Three prompts in and ChatGPT and I fixed the issue.
+
+I'm considering how to move on from here, cause I think one of the hardest parts is actually how to explain it to ChatGPT in a logical way, so that I don't confuse it with my prompts.
+
+I started formulating a prompt for the menu, but realized that I probably have to be able to tell which entries should be shown in the menu, and which not. So I made a toggle button indicating if the entry has been read or not. Next time I'll be ready to move on to the menu.
+
+**Total: About 30 minutes**
+
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:
 - Two different entries; A want-to-read entry, and an already-read entry (also the archived-entries, which are links I don't want in the notebook, but I still wanna know, that I archived them and for what reason - I think.) Or just a checkbox, once checked it moves from - wants to read into a category. (When an entry is marked 'read' it should automatically put itself into the category in the menu?)
-- Links to read title should change to archived entries when that index is active
+- ~~Links to read title should change to archived entries when that index is active~~
 - ~~Categories~~
 - Search-function
 - Menu with all entries sorted into categories
@@ -74,4 +84,5 @@ I ran into the cap of messages on chatgpt 4. I tried switching back to 3.5, but 
 - A prettier readme
 
 Bugs:
-- Cannot add entry without category
+- ~~Cannot add entry without category~~
+- Empty entry when pushing 'save entry'

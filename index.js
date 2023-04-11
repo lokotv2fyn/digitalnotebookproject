@@ -26,6 +26,9 @@ displayEntries(false);
 
 // Function to add entry
 function addEntry(event) {
+  if (isEditMode) {
+    return;
+  }
   const title = titleInput.value;
   const link = linkInput.value;
   const summary = summaryInput.value;
@@ -37,7 +40,8 @@ function addEntry(event) {
     return;
   }
 
-  const entry = { title, link, summary, categories, archived: false };
+  const entry = { title, link, summary, categories, archived: false, read: false };
+
 
   entries.push(entry);
   entries.sort((a, b) => a.title.localeCompare(b.title));
@@ -73,6 +77,7 @@ function displayEntries(showArchived) {
     const linkLink = document.createElement('a');
     const linkSummary = document.createElement('p');
     const archiveButton = document.createElement('button');
+    const readToggleButton = document.createElement('button');
 
     linkTitle.textContent = entry.title;
     linkTitle.classList.add('text-lg', 'font-bold', 'mb-1');
@@ -84,11 +89,20 @@ function displayEntries(showArchived) {
     linkSummary.classList.add('text-gray-400');
     archiveButton.textContent = entry.archived ? 'Unarchive' : 'Archive';
     archiveButton.classList.add('bg-blue-500', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'focus:outline-none', 'focus:shadow-outline', 'ml-2');
+    readToggleButton.textContent = entry.read ? 'Read: Yes' : 'Read: No';
+    readToggleButton.classList.add('bg-green-500', 'hover:bg-green-700', 'text-white', 'font-bold', 'py-1', 'px-2', 'rounded', 'focus:outline-none', 'focus:shadow-outline', 'ml-2');
+
 
     // Add a closure for the archiveButton.onclick function
     archiveButton.onclick = (function(entry) {
       return function() {
         archiveEntry(entry);
+      };
+    })(entry);
+
+    readToggleButton.onclick = (function (entry) {
+      return function () {
+        toggleReadStatus(entry);
       };
     })(entry);
 
@@ -115,9 +129,17 @@ function displayEntries(showArchived) {
     listItem.appendChild(archiveButton);
     listItem.appendChild(editButton); 
     listItem.appendChild(categoryList);
+    listItem.appendChild(readToggleButton);
 
     linksList.appendChild(listItem);
   });
+}
+
+function toggleReadStatus(entryToToggle) {
+  const index = entries.findIndex((entry) => entry === entryToToggle);
+  entries[index].read = !entries[index].read;
+  localStorage.setItem('entries', JSON.stringify(entries));
+  displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
 
 
@@ -139,12 +161,8 @@ const clearEntriesBtn = document.querySelector('#clear-entries');
 clearEntriesBtn.addEventListener('click', clearEntries);
 
 // Add an event listener for the form's submit event
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  if (isEditMode) {
-    saveEntry();
-  }
-});
+form.addEventListener('submit', handleSubmit);
+
 
 // Function to handle the form's submit event
 function handleSubmit(event) {
@@ -163,16 +181,17 @@ function handleSubmit(event) {
 
   const entry = { title, link, summary, categories, archived: false };
 
-  if (entryIndex === -1) {
-    entries.push(entry);
-  } else {
+  if (entryIndex !== -1) {
     entries[entryIndex] = entry;
+  } else {
+    entries.push(entry);
   }
 
   entries.sort((a, b) => a.title.localeCompare(b.title));
 
   // Reset the state
   entryIndex = -1;
+  isEditMode = false; // Add this line
   form.querySelector('[type="submit"]').textContent = 'Add Entry';
 
   // Reset the form and display the entries
@@ -180,6 +199,7 @@ function handleSubmit(event) {
   localStorage.setItem('entries', JSON.stringify(entries));
   displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
+
 
 // Function to edit entry
 function editEntry(entryToEdit) {
@@ -191,8 +211,6 @@ function editEntry(entryToEdit) {
   summaryInput.value = entry.summary;
   categoryCheckboxes.forEach(checkbox => checkbox.checked = entry.categories.includes(checkbox.value));
   form.querySelector('[type="submit"]').textContent = 'Save Entry';
-  // Remove the form's submit event listener to prevent multiple submissions
-  form.removeEventListener('submit', handleSubmit);
 }
 
 // Function to save edited entry
@@ -205,16 +223,20 @@ function saveEntry() {
     .filter(checkbox => checkbox.checked)
     .map(checkbox => checkbox.value);
 
+    if (!title || !link || !summary) {
+      return;
+    }
+
   // Reset the state
   isEditMode = false;
-  form.querySelector('[type="submit"]').textContent = 'Add Entry';
-  entryIndex = -1;
+  
 
   // Update localStorage and display the entries
   localStorage.setItem('entries', JSON.stringify(entries));
   displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
 
+//Jeg mangler en form for check for at den ikke sender en empty entry afsted, når der trykkes på save entry
 
 
 
