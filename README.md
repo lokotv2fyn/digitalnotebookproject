@@ -85,4 +85,4 @@ I started formulating a prompt for the menu, but realized that I probably have t
 
 Bugs:
 - ~~Cannot add entry without category~~
-- Empty entry when pushing 'save entry'
+- ~~Empty entry when pushing 'save entry'~~
