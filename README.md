@@ -70,6 +70,12 @@ I started formulating a prompt for the menu, but realized that I probably have t
 
 **Total: About 30 minutes**
 
+### 12/4-2023:
+
+I added a menu with the categories to the project.
+
+
+
 ### Heres a [look on how things are going](https://digitalnotebookproject.netlify.app/).
 
 ### Rough-roadmap:

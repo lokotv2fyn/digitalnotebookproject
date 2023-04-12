@@ -7,6 +7,9 @@ const linksList = document.querySelector('#links-list');
 const toggleArchivedBtn = document.querySelector('#toggle-archived');
 const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
 const entriesTitle = document.querySelector('h2');
+const sidebarCategories = document.querySelector('#sidebar-categories');
+const burgerMenu = document.querySelector('#burger-menu');
+const closeMenu = document.querySelector('#close-menu');
 
 
 // Create an empty array to hold entries
@@ -236,8 +239,44 @@ function saveEntry() {
   displayEntries(toggleArchivedBtn.textContent === 'Hide Archived Entries');
 }
 
-//Jeg mangler en form for check for at den ikke sender en empty entry afsted, når der trykkes på save entry
+function populateSidebarCategories() {
+  const categories = Array.from(categoryCheckboxes).map((checkbox) => checkbox.value);
+  categories.forEach((category) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = category;
+    listItem.classList.add('text-white', 'mb-2');
+    sidebarCategories.appendChild(listItem);
+  });
+}
+populateSidebarCategories();
 
+// Add this code to the bottom of your JavaScript, after the populateSidebarCategories function
+burgerMenu.addEventListener('click', () => {
+  const nav = document.querySelector('nav');
+  nav.classList.toggle('hidden');
+  nav.classList.toggle('menu-open');
+});
 
+// Add this function to your JavaScript, after the existing burgerMenu event listener
+function closeMenuOnOutsideClick(e) {
+  const nav = document.querySelector('nav');
+  if (
+    !nav.classList.contains('hidden') &&
+    e.target !== burgerMenu &&
+    e.target !== closeMenu &&
+    !nav.contains(e.target)
+  ) {
+    nav.classList.add('hidden');
+    nav.classList.remove('menu-open');
+  }
+}
 
+// Add this code to the bottom of your JavaScript, after the closeMenuOnOutsideClick function
+closeMenu.addEventListener('click', () => {
+  const nav = document.querySelector('nav');
+  nav.classList.add('hidden');
+  nav.classList.remove('menu-open');
+});
+
+document.addEventListener('click', closeMenuOnOutsideClick);
 
